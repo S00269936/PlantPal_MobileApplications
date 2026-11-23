@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.plantpal.screens.DashboardScreen
 import com.example.plantpal.screens.MyPlantsScreen
 import com.example.plantpal.ui.theme.PlantPalTheme
+import com.example.plantpal.screens.PlantDetailsScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -39,9 +40,18 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
-
                         composable("myplants") {
                             MyPlantsScreen(
+                                onBackClick = {
+                                    navController.popBackStack()
+                                },
+                                onPlantClick = {
+                                    navController.navigate("plantdetails")
+                                }
+                            )
+                        }
+                        composable("plantdetails") {
+                            PlantDetailsScreen(
                                 onBackClick = {
                                     navController.popBackStack()
                                 }

@@ -10,7 +10,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun MyPlantsScreen(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onPlantClick: () -> Unit
 ){
     val plants = listOf(
         "Irish lily",
@@ -27,6 +28,7 @@ fun MyPlantsScreen(
             modifier = Modifier.weight(1f)
         ) {
             items(plants) {plant -> Card(
+                onClick = onPlantClick,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
