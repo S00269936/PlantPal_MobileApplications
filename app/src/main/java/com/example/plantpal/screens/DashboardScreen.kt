@@ -7,7 +7,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(
+    onMyPlantsClick: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize()
             .padding(16.dp),
@@ -35,7 +37,7 @@ fun DashboardScreen() {
             }
         }
         Button(
-            onClick = {},
+            onClick = onMyPlantsClick,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("My plants")

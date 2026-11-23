@@ -1,16 +1,18 @@
-
 package com.example.plantpal
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.plantpal.screens.DashboardScreen
+import com.example.plantpal.screens.MyPlantsScreen
 import com.example.plantpal.ui.theme.PlantPalTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,11 +23,31 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             PlantPalTheme {
+                val navController = rememberNavController()
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
-                ) { innerPadding -> Box(
+                ) { innerPadding ->
+                    NavHost(
+                        navController = navController,
+                        startDestination = "dashboard",
                         modifier = Modifier.padding(innerPadding)
-                    ) { DashboardScreen() }
+                    ) {
+                        composable("dashboard") {
+                            DashboardScreen(
+                                onMyPlantsClick = {
+                                    navController.navigate("myplants")
+                                }
+                            )
+                        }
+
+                        composable("myplants") {
+                            MyPlantsScreen(
+                                onBackClick = {
+                                    navController.popBackStack()
+                                }
+                            )
+                        }
+                    }
                 }
             }
         }
