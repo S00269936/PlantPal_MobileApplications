@@ -11,7 +11,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MyPlantsScreen(
     onBackClick: () -> Unit,
-    onPlantClick: () -> Unit
+    onPlantClick: () -> Unit,
+    onAddPlantClick: () -> Unit
 ){
     val plants = listOf(
         "Irish lily",
@@ -22,6 +23,11 @@ fun MyPlantsScreen(
         .padding(16.dp)) {
         Text(text = "My Plants",
             style = MaterialTheme.typography.headlineMedium)
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(
+            onClick = onAddPlantClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {Text("Add New Plant") }
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(8.dp),
