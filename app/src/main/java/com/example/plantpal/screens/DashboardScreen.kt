@@ -8,7 +8,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun DashboardScreen(
-    onMyPlantsClick: () -> Unit
+    onMyPlantsClick: () -> Unit,
+    onScheduleClick: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
@@ -43,7 +44,7 @@ fun DashboardScreen(
             Text("My plants")
         }
         Button(
-            onClick = {},
+            onClick = onScheduleClick,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Care Schedule")
