@@ -17,6 +17,7 @@ import com.example.plantpal.ui.theme.PlantPalTheme
 import com.example.plantpal.screens.PlantDetailsScreen
 import com.example.plantpal.screens.PlantFormScreen
 import com.example.plantpal.screens.CareScheduleScreen
+import com.example.plantpal.screens.EnvironmentScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -42,6 +43,9 @@ class MainActivity : ComponentActivity() {
                                 },
                                 onScheduleClick = {
                                     navController.navigate("careschedule")
+                                },
+                                onEnvironmentClick = {
+                                    navController.navigate("environment")
                                 }
                             )
                         }
@@ -74,6 +78,13 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("careschedule") {
                             CareScheduleScreen(
+                                onBackClick = {
+                                    navController.popBackStack()
+                                }
+                            )
+                        }
+                        composable("environment") {
+                            EnvironmentScreen(
                                 onBackClick = {
                                     navController.popBackStack()
                                 }
